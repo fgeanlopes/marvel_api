@@ -32,19 +32,29 @@ class ListApi extends Component {
     constructor(props) {
         super(props);
 
-        this.openComic = this.openComic.bind(this);
         this.state = {
+            //comic json
             comics: [],
+            //Value Inpur
+            value: '',
+
+            //
             nome: "",
             descricao: "",
             img: "",
             autores: "",
         }
+
+        this.openComic = this.openComic.bind(this);
+        this.searchChapters = this.searchChapters.bind(this);
+
+
+        this.chaptersChange = this.chaptersChange.bind(this);
+        this.chaptersSubmit = this.chaptersSubmit.bind(this);
     }
 
     async componentDidMount() {
         const response = await api.get(listComics);
-        // console.log(response.data.data.results);
         this.setState({ comics: response.data.data.results })
     }
 
@@ -68,12 +78,54 @@ class ListApi extends Component {
         // this.setState({ autores: viewClick.creators.items[0].name });
     }
 
+    chaptersChange(event) {
+        this.setState({ value: event.target.value });
+    }
+
+    chaptersSubmit(event) {
+        event.preventDefault();
+        // alert('A name was submitted: ' + this.state.value);
+        const nameSerach = this.state.value;
+        const searchChapters = baseUrl + "characters?name=" + nameSerach + "&ts=" + timeInMs + "&apikey=" + publicKey + "&hash=" + md5Final
+        this.search(searchChapters);
+        console.log(searchChapters);
+    }
+
+    async search(url) {
+        const response = await api.get(url);
+    }
+
+    searchChapters(e) {
+        // setInterval(() => {
+        //     console.log("ola");
+        // }, 3000);
+
+        this.setState({ value: e.target.value });
+        const nameSerach = this.state.value;
+
+        // const serachChapters = baseUrl + "characters?name=" + nameSerach + "&ts=" + timeInMs + "&apikey=" + publicKey + "&hash=" + md5Final
+        // console.log(nameSerach);
+        // this.search(serachChapters);
+    }
+
+    // async search(url) {
+    //     // setInterval(() => {
+    //     //     console.log("ola");
+    //     // }, 3000);
+    //     const response = await api.get(url);
+    // }
 
     render() {
         const { comics } = this.state;
         return (
             <div>
-                <div className="painel">
+                {/* <input type="text" className="searchChapters" value={this.state.value} onChange={this.searchChapters} placeholder="Pesquise aqui" /> */}
+                <form onSubmit={this.chaptersSubmit}>
+                    <input type="text" value={this.state.value} onChange={this.chaptersChange} />
+                    <input type="submit" value="Submit" />
+                </form>
+
+                <div className="painelClick d-none">
                     <p>Nome : {this.state.nome}</p>
                     <p>Descricao : {this.state.descricao}</p>
                     <img src={this.state.img}></img>

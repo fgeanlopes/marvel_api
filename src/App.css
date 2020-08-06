@@ -28,10 +28,16 @@ body, html{
   width: auto;
 }
 
-.painel p{
+
+
+.d-none{
+  display: none !important;
+}
+
+.painelClick p{
   font-weight: bold;
 }
-.painel{
+.painelClick{
   width: 100%;
   margin-bottom: 30px;
   height: 300px;
@@ -42,6 +48,9 @@ body, html{
   align-items: center;
   justify-content: center;
 }
+
+
+
 
 #container_comics{
   display: flex;
