@@ -1,0 +1,38 @@
+<script>
+
+    const serachChapters = "https://gateway.marvel.com/v1/public/comics/82967&ts=1596684565470&apikey=c3c8876fa5fa3d1baa02d617d24157c2&hash=11ebe7235fa6a74c31d0a46f4133c40a"
+    // const serachChapters = "https://gateway.marvel.com/v1/public/characters?name=Spider-Man&ts=1596671338029&apikey=c3c8876fa5fa3d1baa02d617d24157c2&hash=b143fe8796e49c983a38b2fbc857edea"
+    // const serachChapters = "https://gateway.marvel.com/v1/public/characters?name=Anti-Man&ts=1596671338029&apikey=c3c8876fa5fa3d1baa02d617d24157c2&hash=b143fe8796e49c983a38b2fbc857edea"
+
+    async function search() {
+        const result = await fetch(serachChapters)
+        const data = await result.json();
+        console.log(data);
+        // .then((resolve) => {
+        //     return resolve.json();
+        // })
+        // .then((resolveJson) => {
+        //     console.log(resolveJson);
+        // })
+    } search()
+
+
+    // async searchComic() {
+    //     const name = "ant-man";
+    //     const serachChapters = baseUrl + "characters?name=" + name + "&ts=" + timeInMs + "&apikey=" + publicKey + "&hash=" + md5Final;
+    //     const response = await api.get(serachChapters);
+    //     console.log(response);
+    // }
+
+
+
+    // openComic() {
+        // const openComics = baseUrl + "comics/82967&ts=" + timeInMs + "&apikey=" + publicKey + "&hash=" + md5Final;
+        // const response = await api.get(openComics);
+        // console.log(response);
+    // }
+
+    // < div onClick = { this.openComic } > Teste</ >
+
+
+</script>

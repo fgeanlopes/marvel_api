@@ -1,38 +1,115 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
+
+body, html{
+  overflow-x: hidden;
+  background-color: #444242d6;
+}
+*{
+  padding: 0;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* @font-face {
+     font-family: Marvel;
+     src: url('./dist/font/marvel.woff2');
+} */
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header{
+  width: 100%;
+  height: 100px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.header .logoMarvel{
+  height: 60px;
+  width: auto;
 }
 
-.App-link {
-  color: #61dafb;
+.painel p{
+  font-weight: bold;
+}
+.painel{
+  width: 100%;
+  margin-bottom: 30px;
+  height: 300px;
+  background-color: #9c7542;
+  color: black;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+#container_comics{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+}
+
+#container_comics .card_comic{
+  width: 50%;
+  margin-bottom: 10px;
+}
+@media(min-width:768px){
+  #container_comics .card_comic{
+    width: 33%;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media(min-width:1024px){
+  #container_comics .card_comic{
+    width: 20%;
+    margin-bottom: 30px;
+  }
+}
+@media(min-width:1333px){
+  #container_comics .card_comic{
+    width: 10%;
+  }
+}
+
+
+#container_comics .card_comic_item{
+   margin: 0 5px;
+   background-color: #1c68a6;
+   height: 100%;
+   
+}
+#container_comics .card_comic_item_img{
+  min-height: 220px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #000000d6;
+}
+
+#container_comics .card_comic_item_title{
+    font-size: calc(15px + (15 / 1444) * 100 * 1vw);
+    color: white;
+    font-weight: 500;
+    line-height: 140%;
+    padding: 15px 10px;
+    text-transform: lowercase;
+}
+
+@media(min-width:768px){
+  #container_comics .card_comic_item_title{
+      font-size: calc(10px + (15 / 1444) * 100 * 1vw);
+  }
+}
+
+@media(min-width:992px){
+  #container_comics .card_comic_item_title{
+      font-size: calc(5px + (15 / 1444) * 100 * 1vw);
+  }
+}
+
+@media(min-width:1333px){
+  #container_comics .card_comic_item_title{
+      font-size: calc(0px + (15 / 1444) * 100 * 1vw);
   }
 }
