@@ -1,16 +1,14 @@
 import React from 'react';
-import ListApi from "./ListApi";
+import Header from "./components/Header";
+import Comics from "./components/Comics";
 
 import './App.css';
-const logoMarvel = require("./dist/img/MarvelLogo.svg");
 
 function App() {
   return (
     <div className="App">
-      <div className="header">
-        <img className="logoMarvel" src={logoMarvel} title="logo da Marvel" alt="logo da Marvel" />
-      </div>
-      <ListApi />
+      <Header />
+      <Comics />
     </div >
   );
 }
