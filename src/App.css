@@ -9,6 +9,8 @@ body, html{
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
+  color:white !important;
+  font-size: 30px !important;
 }
 
 /* @font-face {

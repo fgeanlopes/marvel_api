@@ -15,6 +15,7 @@ class Page_home extends Component {
             currentPage: 0,
         }
         this.handlePageClick = this.handlePageClick.bind(this);
+        console.log(this.state.nome);
     }
     componentDidMount() {
         this.receivedData();

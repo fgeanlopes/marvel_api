@@ -1,86 +1,48 @@
-import React from "react";
+import React, { Component } from "react";
 import Api from "../services/Api";
 import KeyMarvel from "../services/KeyMarvel";
 
-class Page_view_quarinho extends React.Component {
-
+class Page_view_quarinho extends Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
-            comics: [],
-            postData: [],
-            nome: "Nome 1",
+            objQuadrinho: [],
         }
-        // this.handleOpenComic = this.handleOpenComic.bind(this);
+        this.handleOpenComic = this.handleOpenComic.bind(this);
     }
-
     componentDidMount() {
-        // this.handleOpenComic();
-
-        // const idQuadrinho = this.props.match.params.id;
-        // const pesquisaQuadrinhaId = `comics/${idQuadrinho}?${KeyMarvel}`;
-        // Api.get(pesquisaQuadrinhaId)
-        //     .then(res => {
-        //         const data = res.data.data.results;
-        //         const postData =
-        //             <>
-        //                 <div className="card_comic" key={data.id}>
-        //                     <div className="card_comic_item">
-        //                         {/* <div className="card_comic_item_img" style={{ backgroundImage: 'url(' + data.thumbnail.path + "." + data.thumbnail.extension + ')' }} /> */}
-        //                         <h2 className="card_comic_item_title">{data.title}</h2>
-        //                     </div>
-        //                 </div>
-        //             </>
-        //         this.setState({ postData: postData })
-        //     });
-
-
-        // console.log("Nome INICIAL", this.state.nome);
-
-        // this.setState({ nome: "Nome 2" })
-        // console.log("NOME ATUALIZADO", this.state.nome);
+        this.handleOpenComic();
     }
 
-    // handleOpenComic() {
-    //     const idQuadrinho = this.props.match.params.id;
-    //     const pesquisaQuadrinhaId = `comics/${idQuadrinho}?${KeyMarvel}`;
-    //     Api.get(pesquisaQuadrinhaId)
-    //         .then(res => {
-    //             const data = res.data.data.results;
-    //             const postData =
-    //                 <>
-    //                     <div className="card_comic" key={data.id}>
-    //                         <div className="card_comic_item">
-    //                             {/* <div className="card_comic_item_img" style={{ backgroundImage: 'url(' + data.thumbnail.path + "." + data.thumbnail.extension + ')' }} /> */}
-    //                             <h2 className="card_comic_item_title">{data.title}</h2>
-    //                         </div>
-    //                     </div>
-    //                 </>
-    //             this.setState({ postData: postData })
-    //         });
-    // }
+    handleOpenComic() {
+        const idQuadrinho = this.props.match.params.id;
+
+        const pesquisaQuadrinhaId = `comics/${idQuadrinho}?${KeyMarvel}`;
+        Api.get(pesquisaQuadrinhaId)
+            .then(res => {
+                const data = res.data.data.results[0];
+                console.log(data)
+                this.setState({ objQuadrinho: data })
+            });
+    }
 
     render() {
-        const idQuadrinho = this.props.match.params.id;
-        const pesquisaQuadrinhaId = `comics/${idQuadrinho}?${KeyMarvel}`;
-        // Api.get(pesquisaQuadrinhaId)
-        //     .then(res => {
-        //         const data = res.data.data.results;
-        //         this.setState({ comics: data });
-        //     })
-        const data = this.state.comics
+        const objQuadrinho = this.state.objQuadrinho;
         return (
             <div>
-                <div className="card_comic" key={data.id}>
-                    <div className="card_comic_item">
-                        {/* //                             <div className="card_comic_item_img" style={{ backgroundImage: 'url(' + data.thumbnail.path + "." + data.thumbnail.extension + ')' }} /> */}
-                        <h2 className="card_comic_item_title">{data.title}</h2>
+                <div className="item">
+                    <div className="thumbnail">
+                        {/* <div className="content_description">
+                            <img src={objQuadrinho.thumbnail.path + "." + objQuadrinho.thumbnail.extension} />
+                        </div> */}
+                    </div>
+                    <div className="content">
+                        <h1 className="content_title">{objQuadrinho.title}</h1>
                     </div>
                 </div>
             </div>
         )
     }
-
 }
 
 export default Page_view_quarinho;
