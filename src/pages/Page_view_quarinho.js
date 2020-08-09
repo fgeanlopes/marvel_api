@@ -8,8 +8,7 @@ class Page_home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            postData: [],
-            name: "Gean",
+
         }
     }
     componentDidMount() {
@@ -22,50 +21,67 @@ class Page_home extends Component {
 
         Api.get(pesquisaQuadrinhaId)
             .then(res => {
-                const data = res.data.data.results;
-                // console.log(data);
-
-
-                const postData =
-                    data.map(comic =>
+                // IMG
+                const dataImg = res.data.data.results;
+                console.log(dataImg);
+                const ImgComic =
+                    dataImg.map(comic =>
                         <React.Fragment>
-                            <div className="comic">
-                                <div className="comic_img">
-                                    <img src={comic.thumbnail.path + "." + comic.thumbnail.extension}></img>
-                                    <div className="overlay" style={{ backgroundImage: 'url(' + comic.thumbnail.path + "." + comic.thumbnail.extension + ')' }} />
-                                </div>
-                                <div className="comic_description">
-                                    <div className="header">
-                                        <h2 className="card_comic_item_title">{comic.title}</h2>
-                                    </div>
-                                    <div className="item-info">
-                                        {/* <p className="item">{comic}</p> */}
-                                    </div>
-                                </div>
-                            </div>
+                            <img src={comic.thumbnail.path + "." + comic.thumbnail.extension}></img>
+                            <div className="overlay" style={{ backgroundImage: 'url(' + comic.thumbnail.path + "." + comic.thumbnail.extension + ')' }} />
                         </React.Fragment >
                     )
-                this.setState({ postData })
+                this.setState({ ImgComic })
 
-                const data_ = res.data.data.results[0].creators.items;
-                // this.setState({ data_ })
+                // TITLE
+                const dataTitle = res.data.data.results;
+                const titleComic =
+                    dataTitle.map(comic =>
+                        <React.Fragment>
+                            <h1 className="comic_title">{comic.title}</h1>
+                        </React.Fragment >
+                    )
+                this.setState({ titleComic })
 
-                for (var item of data_) {
-                    // console.log(item.name);
-                    this.setState({ name: item.name })
-                }
+                // CREATORS
+                // for (var item of data_creators) {
+                //     this.setState({ name_creators: item.name })
+                // }
 
-
+                const data_creators = res.data.data.results[0].creators.items;
+                console.log("creatros", data_creators);
+                const creatorsComic =
+                    data_creators.map(comic =>
+                        <React.Fragment>
+                            <h1 className="comic_title">{comic.name}</h1>
+                        </React.Fragment >
+                    )
+                this.setState({ creatorsComic })
             });
     }
     render() {
+        console.log("state creators", this.state.creatorsComic);
         return (
             <div>
                 <div id="container_comics">
-                    {this.state.postData}
-                    <p>
-                        {this.state.name}
-                    </p>
+                    <div className="comic">
+                        <div className="comic_img">
+                            {this.state.ImgComic}
+                        </div>
+                        <div className="comic_description">
+                            <div className="header">
+                                <div className="comic_description_title">{this.state.titleComic}</div>
+                            </div>
+                            <div className="comic_description_creators">
+                                <h3 className="comic_description_creators_title">Creators</h3>
+                            </div>
+                            <div className="comic_description_creators_title_item">
+                                <div className="comic_description_creators_title_item_name">
+                                    {this.state.creatorsComic}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div >
             </div >
         )
