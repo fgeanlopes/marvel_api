@@ -2,10 +2,10 @@ import React from 'react';
 import Header from "./components/Header";
 import Home from "./pages/Page_home";
 import Quadrinho from "./pages/Page_view_quarinho";
-import Pesquisa from "./pages/Page_pesquisa";
-import Teste from "./pages/teste";
+import Page_view_personagem_all from "./pages/Page_view_personagem_all";
+import Form_pesquisa from "./services/Pesquisa";
 
-import './App.css';
+import "./pages/scss/reset.scss";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -14,28 +14,18 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Link to="/">
-          <Header />
-        </Link>
         <Switch>
-
           <Route exact path="/">
-            <Home />
-            {/* <Teste /> */}
+            <div className="home">
+              <Header />
+              <Form_pesquisa />
+              <Home />
+            </div>
           </Route>
 
-          {/* <Route path="/:id_view_quadinho" component={Quadrinho} /> */}
-
-          {/* <Route path="/:id">
-            <Pesquisa />
-          </Route> */}
-
-          {/* <Route exact path="/:id" component={Pesquisa} /> */}
-          {/* <Route path="/pesquisa" seach="teste" component={Pesquisa} /> */}
-          <Route path="/pesquisa/:id" component={Pesquisa} />
+          <Route path="/pesquisa/:id" component={Page_view_personagem_all} />
 
           <Route path="/quadrinho/:id" component={Quadrinho} />
-
 
         </Switch>
       </Router>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const logoMarvel = require("../dist/img/MarvelLogo.svg");
+const logoMarvel = require("../dist/img/marvelLogo.svg");
 
 function Header() {
     return (

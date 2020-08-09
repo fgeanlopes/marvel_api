@@ -1,0 +1,258 @@
+.home {
+  background-color: #444242d6;
+  @mixin flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header {
+    width: 100%;
+    height: 80px;
+    background-color: #a2c525;
+    @include flex();
+
+    .logoMarvel {
+      height: 40px;
+      width: auto;
+    }
+  }
+
+  form {
+    position: relative;
+    padding: 50px 15px;
+    max-width: 100%;
+    input {
+      max-width: 100%;
+      width: 100%;
+      height: 50px;
+      text-align: left;
+      padding-left: 10px;
+      font-size: 15px;
+      border: none;
+      border-radius: 10px;
+      background-color: #dcdcdc;
+      &:focus {
+        background-color: #fff;
+      }
+    }
+  }
+
+  form {
+    .btn_search {
+      position: relative;
+      display: block;
+    }
+    .btn_search .logoMarvel {
+      position: absolute;
+      top: -50px;
+      right: 0;
+      width: 50px;
+      height: 50px;
+      background: #1c68a6;
+      border-radius: 0 10px 10px 0;
+      padding: 10px;
+      transition: 0.8s;
+      &:hover {
+        background-color: #a2c525;
+        transition: 0.8s;
+      }
+    }
+  }
+
+  #container_comics {
+    @include flex();
+    flex-wrap: wrap;
+
+    padding: 0 10px;
+    padding-bottom: 140px;
+
+    @media (min-width: 1278px) {
+      padding-top: 30px;
+      padding-bottom: 120px;
+    }
+  }
+
+  #container_comics .card_comic {
+    width: 50%;
+    margin-bottom: 10px;
+    @media (min-width: 768px) {
+      width: 33%;
+    }
+    @media (min-width: 1024px) {
+      width: 20%;
+      margin-bottom: 30px;
+    }
+    @media (min-width: 1300px) {
+      width: 25%;
+    }
+  }
+
+  #container_comics .card_comic_item {
+    margin: 0 5px;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    * {
+      border-radius: 4px;
+      transition: 0.3s;
+    }
+    &:after {
+      content: "";
+      width: 0%;
+      height: 2px;
+      background-color: #a2c525;
+
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transition: 0.3s;
+    }
+    &:hover {
+      &:after {
+        width: 100%;
+        transition: 0.3s;
+      }
+    }
+  }
+
+  #container_comics .card_comic_item {
+    &:hover {
+      .card_comic_item_img {
+        transform: rotate(5deg) scale(1.2);
+      }
+    }
+  }
+
+  #container_comics {
+    .card_comic_item_img {
+      min-height: 220px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: #000000d6;
+      transform: rotate(0deg);
+    }
+  }
+
+  #container_comics {
+    .card_comic_item_title {
+      font-size: calc(10px + (15 / 1444) * 100 * 1vw);
+      padding: 0 15px;
+      color: white;
+      text-align: center;
+
+      @include flex();
+
+      @media (max-width: 1278px) {
+        padding: 20px 10px;
+        color: black;
+        border-radius: 0 0 4px 4px;
+        background-color: #a2c525;
+        min-height: 130px;
+      }
+
+      @media (min-width: 1278px) {
+        width: 100%;
+        height: 100%;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        visibility: hidden;
+        opacity: 0;
+      }
+    }
+  }
+
+  #container_comics .card_comic_item {
+    @media (min-width: 992px) {
+      font-size: calc(4px + (15 / 1444) * 100 * 1vw);
+    }
+    &:hover {
+      .card_comic_item_title {
+        background-color: #040404b5;
+        visibility: visible;
+        opacity: 1;
+        transition: 0.3s;
+      }
+    }
+  }
+
+  .footer {
+    background-color: #a2c525;
+
+    @include flex();
+
+    position: fixed;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    @media (min-width: 768px) {
+      height: 70px;
+    }
+    .number_item {
+      color: white;
+      padding: 15px;
+    }
+  }
+
+  .footer {
+    .pagination {
+      @include flex();
+      flex-wrap: wrap;
+      height: 100%;
+
+      list-style: none;
+      outline: none;
+      .active {
+        a {
+          color: #fff;
+          background-color: #444242d6;
+          box-shadow: 0 0px 3px 0px rgba(0, 0, 0, 0.75);
+        }
+      }
+      @media (max-width: 768px) {
+        .next,
+        .previous {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .pagination {
+    li {
+      @media (min-width: 768px) {
+        height: 100%;
+      }
+      a {
+        &:hover {
+          color: white;
+          background-color: #1c68a6;
+          box-shadow: 0 0px 3px 0px rgba(0, 0, 0, 0.75);
+        }
+        color: white;
+        padding: 0 20px;
+        text-align: center;
+        display: block;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        outline: none;
+        height: 50px;
+        cursor: pointer;
+        @media (min-width: 768px) {
+          height: 100%;
+        }
+      }
+      @media (max-width: 768px) {
+        width: 20%;
+      }
+    }
+  }
+}
