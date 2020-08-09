@@ -49,14 +49,41 @@ class Page_home extends Component {
                 // }
 
                 const data_creators = res.data.data.results[0].creators.items;
-                console.log("creatros", data_creators);
+                // console.log("creatros", data_creators);
                 const creatorsComic =
                     data_creators.map(comic =>
                         <React.Fragment>
-                            <h1 className="comic_title">{comic.name}</h1>
+                            <h5 className="comic_title">{comic.name}</h5>
                         </React.Fragment >
                     )
                 this.setState({ creatorsComic })
+
+
+
+
+                //Characters
+                const data_characters = res.data.data.results[0].characters.items;
+                // console.log("characters", data_characters);
+                const charactersComic =
+                    data_characters.map(comic =>
+                        <React.Fragment>
+                            <h5 className="comic_title">{comic.name}</h5>
+                        </React.Fragment >
+                    )
+                this.setState({ charactersComic })
+
+                //Stories
+                const data_stories = res.data.data.results[0].stories.items;
+                console.log("characters", data_stories);
+                const storiesComic =
+                    data_stories.map(comic =>
+                        <React.Fragment>
+                            <h5 className="comic_title">{comic.name}</h5>
+                        </React.Fragment >
+                    )
+                this.setState({ storiesComic })
+
+
             });
     }
     render() {
@@ -72,14 +99,35 @@ class Page_home extends Component {
                             <div className="header">
                                 <div className="comic_description_title">{this.state.titleComic}</div>
                             </div>
+
                             <div className="comic_description_creators">
                                 <h3 className="comic_description_creators_title">Creators</h3>
-                            </div>
-                            <div className="comic_description_creators_title_item">
-                                <div className="comic_description_creators_title_item_name">
-                                    {this.state.creatorsComic}
+                                <div className="comic_description_creators_item">
+                                    <div className="comic_description_creators_item_name">
+                                        {this.state.creatorsComic}
+                                    </div>
                                 </div>
                             </div>
+
+                            <div className="comic_description_characters">
+                                <h3 className="comic_description_characters_title">Characters</h3>
+                                <div className="comic_description_characters_item">
+                                    <div className="comic_description_characters_item_name">
+                                        {this.state.charactersComic}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="comic_description_stories">
+                                <h3 className="comic_description_stories_title">Stories</h3>
+                                <div className="comic_description_stories_item">
+                                    <div className="comic_description_stories_item_name">
+                                        {this.state.storiesComic}
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                 </div >
