@@ -1,4 +1,7 @@
 .home {
+  $color_1: #a2c525;
+  $color_2: #fff;
+
   background-color: #444242d6;
   @mixin flex {
     display: flex;
@@ -9,7 +12,7 @@
   .header {
     width: 100%;
     height: 80px;
-    background-color: #a2c525;
+    background-color: $color_1;
     @include flex();
 
     .logoMarvel {
@@ -33,7 +36,7 @@
       border-radius: 10px;
       background-color: #dcdcdc;
       &:focus {
-        background-color: #fff;
+        background-color: $color_2;
       }
     }
   }
@@ -49,12 +52,12 @@
       right: 0;
       width: 50px;
       height: 50px;
-      background: #1c68a6;
+      background-color: $color_1;
       border-radius: 0 10px 10px 0;
       padding: 10px;
       transition: 0.8s;
       &:hover {
-        background-color: #a2c525;
+        background: #1c68a6;
         transition: 0.8s;
       }
     }
@@ -101,7 +104,7 @@
       content: "";
       width: 0%;
       height: 2px;
-      background-color: #a2c525;
+      background-color: $color_1;
 
       position: absolute;
       bottom: 0;
@@ -139,7 +142,7 @@
     .card_comic_item_title {
       font-size: calc(10px + (15 / 1444) * 100 * 1vw);
       padding: 0 15px;
-      color: white;
+      color: $color_2;
       text-align: center;
 
       @include flex();
@@ -148,7 +151,7 @@
         padding: 20px 10px;
         color: black;
         border-radius: 0 0 4px 4px;
-        background-color: #a2c525;
+        background-color: $color_1;
         min-height: 130px;
       }
 
@@ -182,7 +185,10 @@
   }
 
   .footer {
-    background-color: #a2c525;
+    background-color: #7a8e31;
+    @media (min-width: 1200px) {
+      background-color: $color_1;
+    }
 
     @include flex();
 
@@ -194,7 +200,7 @@
       height: 70px;
     }
     .number_item {
-      color: white;
+      color: $color_2;
       padding: 15px;
     }
   }
@@ -209,9 +215,9 @@
       outline: none;
       .active {
         a {
-          color: #fff;
-          background-color: #444242d6;
-          box-shadow: 0 0px 3px 0px rgba(0, 0, 0, 0.75);
+          color: #a2c525;
+          background-color: $color_2;
+          box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.75);
         }
       }
       @media (max-width: 768px) {
@@ -230,11 +236,11 @@
       }
       a {
         &:hover {
-          color: white;
+          color: $color_2;
           background-color: #1c68a6;
           box-shadow: 0 0px 3px 0px rgba(0, 0, 0, 0.75);
         }
-        color: white;
+        color: $color_2;
         padding: 0 20px;
         text-align: center;
         display: block;
