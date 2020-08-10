@@ -41,7 +41,6 @@ class Page_view_detalhes extends Component {
 
                     // THUMBNAIL
                     const dataImg = res.data.data.results;
-                    console.log(dataImg);
                     const thumbnail =
                         dataImg.map(comic =>
                             <React.Fragment>
@@ -95,6 +94,9 @@ class Page_view_detalhes extends Component {
                             </React.Fragment >
                         )
                     this.setState({ stories })
+                }).catch((erro) => {
+                    console.log("Erro ao buscar dados!");
+                    this.setState({ title: "Erro a buscar informações, tente novamente mais tarde!" })
                 });
         }
         else {
@@ -142,7 +144,6 @@ class Page_view_detalhes extends Component {
 
                     //Description
                     const dataDescription = res.data.data.results;
-                    console.log(dataDescription);
                     const description =
                         dataDescription.map(comic =>
                             <React.Fragment>
@@ -184,6 +185,9 @@ class Page_view_detalhes extends Component {
                         )
                     this.setState({ series })
 
+                }).catch((erro) => {
+                    console.log("Erro ao buscar dados!");
+                    this.setState({ title: "Erro a buscar informações, tente novamente mais tarde!" })
                 });
         }
     }

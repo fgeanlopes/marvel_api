@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 const search = require("../dist/img/search.svg");
 
-
 class Pesquisa extends React.Component {
     constructor(props) {
         super(props);

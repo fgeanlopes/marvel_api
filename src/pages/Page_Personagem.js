@@ -18,32 +18,62 @@ class Page_Personagem extends Component {
 
     receivedData() {
         const idPesquisa = this.props.match.params.id;
-        const urlPersonagem = `characters?${KeyMarvel}&nameStartsWith=${idPesquisa}&orderBy=name&limit=15&offset=0`;
+        const verificador = this.props.match;
 
-        // "https://gateway.marvel.com/v1/public/characters?apikey=13065ce22cdecaf8358b1b56dc54e2c7&nameStartsWith=spider-man&orderBy=name&limit=15&offset=0"
-
-        Api.get(urlPersonagem)
-            .then(res => {
-                const data = res.data.data.results;
-                console.log(data);
-
-                const data_Personsagem =
-                    data.map(comic =>
-                        <React.Fragment>
-                            <div className="card_comic" key={comic.id}>
-                                <Link key={comic.id} to={{ pathname: `/personagem/detalhes/${comic.id}` }}>
-                                    <div className="card_comic_item">
-                                        <div className="content_img">
-                                            <img className="card_comic_item_img" src={comic.thumbnail.path + "." + comic.thumbnail.extension}></img>
+        if (verificador.path === "/personagem/pesquisa/:id") {
+            const urlPersonagem = `characters?${KeyMarvel}&nameStartsWith=${idPesquisa}&orderBy=name&limit=15&offset=0`;
+            Api.get(urlPersonagem)
+                .then(res => {
+                    const data = res.data.data.results;
+                    const data_Personsagem =
+                        data.map(comic =>
+                            <React.Fragment>
+                                <div className="card_comic" key={comic.id}>
+                                    <Link key={comic.id} to={{ pathname: `/personagem/detalhes/${comic.id}` }}>
+                                        <div className="card_comic_item">
+                                            <div className="content_img">
+                                                <img className="card_comic_item_img" src={comic.thumbnail.path + "." + comic.thumbnail.extension}></img>
+                                            </div>
+                                            <h2 className="card_comic_item_title">{comic.name}</h2>
                                         </div>
-                                        <h2 className="card_comic_item_title">{comic.name}</h2>
-                                    </div>
-                                </Link>
-                            </div>
-                        </React.Fragment>
-                    )
-                this.setState({ data_Personsagem })
-            });
+                                    </Link>
+                                </div>
+                            </React.Fragment>
+                        )
+                    this.setState({ data_Personsagem })
+                }).catch((erro) => {
+                    console.log("Erro ao buscar dados!");
+                    this.setState({ postData: "Erro a buscar informações, tente novamente mais tarde!" })
+                });
+        }
+        else {
+            const urlPersonagem = `characters?${KeyMarvel}&orderBy=name&limit=16&offset=322`;
+            Api.get(urlPersonagem)
+                .then(res => {
+                    const data = res.data.data.results;
+                    const data_Personsagem =
+                        data.map(comic =>
+                            <React.Fragment>
+                                <div className="card_comic" key={comic.id}>
+                                    <Link key={comic.id} to={{ pathname: `/personagem/detalhes/${comic.id}` }}>
+                                        <div className="card_comic_item">
+                                            <div className="content_img">
+                                                <img className="card_comic_item_img" src={comic.thumbnail.path + "." + comic.thumbnail.extension}></img>
+                                            </div>
+                                            <h2 className="card_comic_item_title">{comic.name}</h2>
+                                        </div>
+                                    </Link>
+                                </div>
+                            </React.Fragment>
+                        )
+                    this.setState({ data_Personsagem })
+                }).catch((erro) => {
+                    console.log("Erro ao buscar dados!");
+                    this.setState({ postData: "Erro a buscar informações, tente novamente mais tarde!" })
+                });
+        }
+
+
     }
     render() {
         const icon_back_page = <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
