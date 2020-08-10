@@ -18,6 +18,7 @@ class Page_Personagem extends Component {
 
     receivedData() {
         const idPesquisa = this.props.match.params.id;
+        console.log(idPesquisa);
         const verificador = this.props.match;
 
         if (verificador.path === "/personagem/pesquisa/:id") {
@@ -27,7 +28,7 @@ class Page_Personagem extends Component {
                     const data = res.data.data.results;
                     const data_Personsagem =
                         data.map(comic =>
-                            <React.Fragment>
+                            <React.Fragment key={comic.id}>
                                 <div className="card_comic" key={comic.id}>
                                     <Link key={comic.id} to={{ pathname: `/personagem/detalhes/${comic.id}` }}>
                                         <div className="card_comic_item">
@@ -53,7 +54,7 @@ class Page_Personagem extends Component {
                     const data = res.data.data.results;
                     const data_Personsagem =
                         data.map(comic =>
-                            <React.Fragment>
+                            <React.Fragment key={comic.id}>
                                 <div className="card_comic" key={comic.id}>
                                     <Link key={comic.id} to={{ pathname: `/personagem/detalhes/${comic.id}` }}>
                                         <div className="card_comic_item">
@@ -72,8 +73,6 @@ class Page_Personagem extends Component {
                     this.setState({ postData: "Erro a buscar informações, tente novamente mais tarde!" })
                 });
         }
-
-
     }
     render() {
         const icon_back_page = <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">

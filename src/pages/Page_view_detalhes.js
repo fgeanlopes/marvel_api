@@ -35,15 +35,14 @@ class Page_view_detalhes extends Component {
                 characters_status: status,
                 creators_status: status
             })
-
             Api.get(pesquisaQuadrinho)
                 .then(res => {
 
                     // THUMBNAIL
                     const dataImg = res.data.data.results;
                     const thumbnail =
-                        dataImg.map(comic =>
-                            <React.Fragment>
+                        dataImg.map((comic, index) =>
+                            <React.Fragment key={index}>
                                 <img src={comic.thumbnail.path + "." + comic.thumbnail.extension}></img>
                                 <div className="overlay" style={{ backgroundImage: 'url(' + comic.thumbnail.path + "." + comic.thumbnail.extension + ')' }} />
                             </React.Fragment >
@@ -54,8 +53,8 @@ class Page_view_detalhes extends Component {
                     // TITLE
                     const dataTitle = res.data.data.results;
                     const title =
-                        dataTitle.map(comic =>
-                            <React.Fragment>
+                        dataTitle.map((comic, index) =>
+                            <React.Fragment key={index}>
                                 <h1 className="comic_title">{comic.title}</h1>
                             </React.Fragment >
                         )
@@ -66,9 +65,9 @@ class Page_view_detalhes extends Component {
                     // CREATORS
                     const dataCreators = res.data.data.results[0].creators.items;
                     const creators =
-                        dataCreators.map(comic =>
-                            <React.Fragment>
-                                <h5 className="comic_title">{comic.name}</h5>
+                        dataCreators.map((comic, index) =>
+                            <React.Fragment key={index}>
+                                <h5 className="comic_title" key={index}>{comic.name}</h5>
                             </React.Fragment >
                         )
                     this.setState({ creators })
@@ -77,20 +76,30 @@ class Page_view_detalhes extends Component {
                     //CHARACTERS
                     const dataCharacters = res.data.data.results[0].characters.items;
                     const characters =
-                        dataCharacters.map(comic =>
-                            <React.Fragment>
-                                <h5 className="comic_title">{comic.name}</h5>
+                        dataCharacters.map((comic, index) =>
+                            <React.Fragment key={index}>
+                                <h5 className="comic_title" key={comic.id}>{comic.name}</h5>
                             </React.Fragment >
                         )
                     this.setState({ characters })
 
+                    const resultArray = [
+                        dataCreators,
+                        dataCharacters,
+                    ]
+
+                    for (var item in resultArray) {
+                        if (resultArray[item] == 0) {
+                            console.log("Array vazio", resultArray[item]);
+                        }
+                    }
 
                     //Stories
                     const dataStories = res.data.data.results[0].stories.items;
                     const stories =
-                        dataStories.map(comic =>
-                            <React.Fragment>
-                                <h5 className="comic_title">{comic.name}</h5>
+                        dataStories.map((comic, index) =>
+                            <React.Fragment key={index}>
+                                <h5 className="comic_title" key={comic.id}>{comic.name}</h5>
                             </React.Fragment >
                         )
                     this.setState({ stories })
@@ -114,18 +123,18 @@ class Page_view_detalhes extends Component {
                 .then(res => {
                     const data = res.data.data.results;
                     const thumbnail =
-                        data.map(comic =>
-                            <React.Fragment>
+                        data.map((comic, index) =>
+                            <React.Fragment key={index}>
                                 <img src={comic.thumbnail.path + "." + comic.thumbnail.extension}></img>
                                 <div className="overlay" style={{ backgroundImage: 'url(' + comic.thumbnail.path + "." + comic.thumbnail.extension + ')' }} />
                             </React.Fragment >
                         )
                     this.setState({ thumbnail })
-                    // TITLE
 
+                    // TITLE
                     const title =
-                        data.map(comic =>
-                            <React.Fragment>
+                        data.map((comic, index) =>
+                            <React.Fragment key={index}>
                                 <h1 className="comic_title">{comic.name}</h1>
                             </React.Fragment >
                         )
@@ -135,9 +144,9 @@ class Page_view_detalhes extends Component {
                     //Stories
                     const data_stories = res.data.data.results[0].stories.items;
                     const stories =
-                        data_stories.map(comic =>
-                            <React.Fragment>
-                                <h5 className="comic_title">{comic.name}</h5>
+                        data_stories.map((comic, index) =>
+                            <React.Fragment key={index}>
+                                <h5 className="comic_title" key={comic.id}>{comic.name}</h5>
                             </React.Fragment >
                         )
                     this.setState({ stories })
@@ -145,8 +154,8 @@ class Page_view_detalhes extends Component {
                     //Description
                     const dataDescription = res.data.data.results;
                     const description =
-                        dataDescription.map(comic =>
-                            <React.Fragment>
+                        dataDescription.map((comic, index) =>
+                            <React.Fragment key={index}>
                                 <h5 className="comic_title">{comic.description}</h5>
                             </React.Fragment >
                         )
@@ -156,9 +165,9 @@ class Page_view_detalhes extends Component {
                     //Comics
                     const dataComics = res.data.data.results[0].comics.items;
                     const comics =
-                        dataComics.map(comic =>
-                            <React.Fragment>
-                                <h5 className="comic_title">{comic.name}</h5>
+                        dataComics.map((comic, index) =>
+                            <React.Fragment key={index}>
+                                <h5 className="comic_title" key={comic.id}>{comic.name}</h5>
                             </React.Fragment >
                         )
                     this.setState({ comics })
@@ -167,9 +176,9 @@ class Page_view_detalhes extends Component {
                     //Events
                     const dataEvents = res.data.data.results[0].events.items;
                     const events =
-                        dataEvents.map(comic =>
-                            <React.Fragment>
-                                <h5 className="comic_title">{comic.name}</h5>
+                        dataEvents.map((comic, index) =>
+                            <React.Fragment key={index}>
+                                <h5 className="comic_title" key={comic.id}>{comic.name}</h5>
                             </React.Fragment >
                         )
                     this.setState({ events })
@@ -178,9 +187,9 @@ class Page_view_detalhes extends Component {
                     //Series
                     const dataSeries = res.data.data.results[0].series.items;
                     const series =
-                        dataSeries.map(comic =>
-                            <React.Fragment>
-                                <h5 className="comic_title">{comic.name}</h5>
+                        dataSeries.map((comic, index) =>
+                            <React.Fragment key={index}>
+                                <h5 className="comic_title" key={comic.id}>{comic.name}</h5>
                             </React.Fragment >
                         )
                     this.setState({ series })
@@ -192,10 +201,37 @@ class Page_view_detalhes extends Component {
         }
     }
     render() {
+        // Validação state para visualização, quadrinho.
+        const message = "Não há informação disponivel";
+        if (this.state.characters == "") {
+            this.setState({ characters: message })
+        }
+        if (this.state.creators == "") {
+            this.setState({ creators: message })
+        }
+        if (this.state.stories == "") {
+            this.setState({ stories: message })
+        }
+
+        // Validação state para visualização, quadrinho.
+        if (this.state.comics == "") {
+            this.setState({ comics: message })
+        }
+        if (this.state.events == "") {
+            this.setState({ events: message })
+        }
+        if (this.state.series == "") {
+            this.setState({ series: message })
+        }
+        if (this.state.stories == "") {
+            this.setState({ stories: message })
+        }
+
         const icon_back_page = <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="50" height="50" rx="10" />
             <path d="M30.8882 35.3972L21.1525 25.6412C20.7862 25.275 20.7862 24.6791 21.1532 24.3122L30.8882 14.5569C31.2546 14.1897 31.254 13.5949 30.8868 13.2285C30.5196 12.8621 29.9249 12.8627 29.5584 13.2299L19.8241 22.9845C18.7254 24.0832 18.7254 25.8709 19.8234 26.9689L29.5584 36.7242C29.7419 36.908 29.9826 37 30.2233 37C30.4634 37 30.7035 36.9085 30.8868 36.7255C31.254 36.3591 31.2546 35.7644 30.8882 35.3972Z" fill="white" />
         </svg>
+
         return (
             <div>
                 <div id="container_comics">

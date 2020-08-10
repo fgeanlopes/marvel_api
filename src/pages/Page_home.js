@@ -35,7 +35,7 @@ class Page_home extends Component {
                 const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage);
                 const postData =
                     slice.map(comic =>
-                        <React.Fragment>
+                        <React.Fragment key={comic.id}>
                             <Link className="card_comic" to={{ pathname: `/quadrinho/detalhes/${comic.id}` }}>
                                 <div className="card_comic_item">
                                     <div className="content_img">
