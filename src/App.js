@@ -1,9 +1,7 @@
 import React from 'react';
-import Header from "./components/Header";
 import Home from "./pages/Page_home";
-import Quadrinho from "./pages/Page_view_quarinho";
-import Page_view_personagem_all from "./pages/Page_view_personagem_all";
-import Form_pesquisa from "./services/Pesquisa";
+import Page_detalhes from "./pages/Page_view_detalhes";
+import Personagem from "./pages/Page_Personagem";
 
 import "./pages/scss/reset.scss";
 
@@ -15,17 +13,11 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path="/">
-            <div className="home">
-              <Header />
-              <Form_pesquisa />
-              <Home />
-            </div>
-          </Route>
 
-          <Route path="/pesquisa/:id" component={Page_view_personagem_all} />
-
-          <Route path="/quadrinho/:id" component={Quadrinho} />
+          <Route exact path="/" component={Home} />
+          <Route path="/personagem/pesquisa/:id" component={Personagem} />
+          <Route path="/personagem/detalhes/:id" component={Page_detalhes} />
+          <Route path="/quadrinho/detalhes/:id" component={Page_detalhes} />
 
         </Switch>
       </Router>
