@@ -1,6 +1,6 @@
 <h1>API Marvel Comics - Gean Lopes</h1>
 <div align="center">
-<img src="https://ik.imagekit.io/4dwwfihio4/Marvel_Logo_SAFhhaGl-.png">
+<img src="./public/logo_para_o_git.png">
 <br>
 <br>
 <img src="./demo-video.gif">
