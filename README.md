@@ -14,10 +14,10 @@
 
 <h2> ⚡ Sobre</h2>
 <p>Este projeto foi desenvolvido, utilizando API da Marvel Comics. Aqui você poderar encontrar diversas informações sobre quadrinhos, pesquisar por personagem, (Nome em inglês) quando pesquisar você verá descrição, quadrinhos relacionados, eventos, séries e histórias</p>
+
+<br>
 <br>
 
-___
-<br>
 <h2> 🚀 Tecnologias utlizadas</h2>
 <p>O projeto foi desenvolvido utilizando as seguintes tecnologias</p>
 
@@ -26,14 +26,8 @@ ___
 - Sass(Scss)
 <br>
 <br>
-<br>
-___
-
-<br>
-<br>
 
 <h2> 📦 Como baixar o projeto</h2>
-
 
 ```bash
 # Clonar o repositório
