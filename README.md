@@ -39,7 +39,7 @@ $ git clone https://github.com/fgeanlopes/marvel_api
 $ cd marvel_api
 
 #Instalar as dependências
-$ install npm
+$ npm install
 
 #Iniciar o projeto
 $ npm start
