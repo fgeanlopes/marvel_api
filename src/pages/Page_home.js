@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import './scss/Page_home.scss';
 
 import Search from "../components/Search";
-const iconMarvel = require("../dist/img/marvelLogo.svg");
+const iconMarvel = require("../dist/img/MarvelLogo.svg");
 
 class Page_home extends Component {
     constructor(props) {

@@ -4,7 +4,7 @@ import KeyMarvel from "../services/KeyMarvel";
 import { Link } from "react-router-dom";
 
 import "./scss/Page_character.scss"
-const logoMarvel = require("../dist/img/marvelLogo.svg");
+const logoMarvel = require("../dist/img/MarvelLogo.svg");
 
 class Page_character extends Component {
     constructor(props) {
