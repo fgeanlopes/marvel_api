@@ -1,7 +1,7 @@
 import React from 'react';
 import Home from "./pages/Page_home";
-import Page_detalhes from "./pages/Page_view_detalhes";
-import Personagem from "./pages/Page_Personagem";
+import Page_details from "./pages/Page_view_details";
+import Character from "./pages/Page_character";
 
 import "./pages/scss/reset.scss";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -13,12 +13,12 @@ function App() {
         <Switch>
 
           <Route exact path="/" component={Home} />
-          <Route path="/quadrinho/detalhes/:id" component={Page_detalhes} />
+          <Route path="/comic/details/:id" component={Page_details} />
 
-          <Route path="/personagem/pesquisa/:id" component={Personagem} />
-          <Route path="/personagem/detalhes/:id" component={Page_detalhes} />
+          <Route path="/character/search/:id" component={Character} />
+          <Route path="/character/details/:id" component={Page_details} />
 
-          <Route path="/personagem/" component={Personagem} />
+          <Route path="/character/" component={Character} />
 
         </Switch>
       </Router>

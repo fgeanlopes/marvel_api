@@ -1,0 +1,194 @@
+.character {
+  $color_1: #a2c525;
+  $color_2: #fff;
+  min-height: 100%;
+  //   height: 100vh;
+
+  background-color: #444242d6;
+  @mixin flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon_back_page {
+    cursor: pointer;
+    background: transparent;
+    width: 50px;
+    position: fixed;
+    z-index: 3;
+    top: 10%;
+    transform: translateY(-50%);
+    right: 15px;
+    @media (min-width: 500px) {
+      right: 30px;
+    }
+    @media (min-width: 1278px) {
+      transform: translateY(0);
+      top: 30px;
+      right: initial;
+      left: 30px;
+    }
+    svg {
+      fill: #90af21;
+    }
+    &:hover {
+      svg {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  .logoMarvel {
+    position: absolute;
+    top: 30px;
+    height: 50px;
+    right: 47px;
+    z-index: 10;
+    visibility: hidden;
+    @media(min-width:1200px){
+      visibility: visible;
+    }
+  }
+
+  #container_comics {
+    @include flex();
+    flex-wrap: wrap;
+
+    padding: 50px 10px;
+
+    @media (min-width: 1278px) {
+      padding: 120px 25px 25px 25px;
+    }
+  }
+
+  #container_comics .card_comic {
+    width: 100%;
+    margin-bottom: 10px;
+    @media (min-width: 578px) {
+      width: 50%;
+    }
+    @media (min-width: 850px) {
+      width: 33%;
+      margin-bottom: 30px;
+    }
+    @media (min-width: 1278px) {
+      width: 25%;
+    }
+  }
+
+  #container_comics .card_comic_item {
+    margin: 0 5px;
+    height: 100%;
+    position: relative;
+    .content_img {
+      overflow: hidden;
+      @media (min-width: 578px) {
+        height: 290px;
+      }
+      img {
+        max-width: 100%;
+        width: 100%;
+        @media (min-width: 578px) {
+          transform: scale(2);
+          @media (min-width: 1278px) {
+            transform: scale(1.7);
+          }
+        }
+      }
+    }
+    * {
+      border-radius: 4px;
+      transition: 0.3s;
+    }
+    @media (min-width: 1200px) {
+      &:after {
+        content: "";
+        width: 0%;
+        height: 2px;
+        background-color: $color_1;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transition: 0.3s;
+      }
+    }
+    &:hover {
+      &:after {
+        width: 100%;
+        transition: 0.3s;
+      }
+    }
+  }
+
+  #container_comics .card_comic_item {
+    @media (min-width: 600px) {
+      &:hover {
+        cursor: pointer;
+        .card_comic_item_img {
+          transform: rotate(5deg) scale(1.2);
+        }
+      }
+    }
+  }
+
+  #container_comics {
+    .card_comic_item_img {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: #000000d6;
+      transform: rotate(0deg);
+    }
+  }
+
+  #container_comics {
+    .card_comic_item_title {
+      font-size: calc(10px + (15 / 1444) * 100 * 1vw);
+      padding: 0 15px;
+      color: $color_2;
+      text-align: center;
+      position: relative;
+      top: -5px;
+
+      @include flex();
+
+      @media (max-width: 1278px) {
+        padding: 20px 10px;
+        color: black;
+        border-radius: 0 0 4px 4px;
+        background-color: $color_1;
+        min-height: 130px;
+      }
+
+      @media (min-width: 1278px) {
+        width: 100%;
+        height: 100%;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        visibility: hidden;
+        opacity: 0;
+      }
+    }
+  }
+
+  #container_comics .card_comic_item {
+    @media (min-width: 992px) {
+      font-size: calc(4px + (15 / 1444) * 100 * 1vw);
+    }
+    @media (min-width: 1278px) {
+      &:hover {
+        .card_comic_item_title {
+          background-color: #040404b5;
+          visibility: visible;
+          opacity: 1;
+          transition: 0.3s;
+        }
+      }
+    }
+  }
+}

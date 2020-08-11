@@ -4,12 +4,10 @@ import ReactPaginate from 'react-paginate';
 import KeyMarvel from "../services/KeyMarvel";
 import { Link } from "react-router-dom";
 
-import './scss/Home.scss';
+import './scss/Page_home.scss';
 
-import Form_pesquisa from "../services/Pesquisa";
-const logoMarvel = require("../dist/img/marvelLogo.svg");
-
-
+import Search from "../components/Search";
+const iconMarvel = require("../dist/img/marvelLogo.svg");
 
 class Page_home extends Component {
     constructor(props) {
@@ -27,8 +25,8 @@ class Page_home extends Component {
         this.receivedData();
     }
     receivedData() {
-        const urlGetQuadrinho = `comics?${KeyMarvel}&orderBy=title&limit=100&offset=0`;
-        Api.get(urlGetQuadrinho)
+        const urlGetComic = `comics?${KeyMarvel}&orderBy=title&limit=100&offset=0`;
+        Api.get(urlGetComic)
             .then(res => {
                 const data = res.data.data.results;
                 this.setState({ comics: data });
@@ -36,10 +34,10 @@ class Page_home extends Component {
                 const postData =
                     slice.map(comic =>
                         <React.Fragment key={comic.id}>
-                            <Link className="card_comic" to={{ pathname: `/quadrinho/detalhes/${comic.id}` }}>
+                            <Link className="card_comic" to={{ pathname: `/comic/details/${comic.id}` }}>
                                 <div className="card_comic_item">
                                     <div className="content_img">
-                                        <img className="card_comic_item_img" src={comic.thumbnail.path + "." + comic.thumbnail.extension}></img>
+                                        <img className="card_comic_item_img" src={comic.thumbnail.path + "." + comic.thumbnail.extension} alt={comic.title}></img>
                                     </div>
                                     <h2 className="card_comic_item_title">{comic.title}</h2>
                                 </div>
@@ -49,7 +47,7 @@ class Page_home extends Component {
                 this.setState({ pageCount: Math.ceil(data.length / this.state.perPage), postData })
             }).catch((erro) => {
                 console.log("Erro ao buscar dados!");
-                this.setState({ postData: "Erro a buscar informações, tente novamente mais tarde!" })
+                this.setState({ postData: "Erro ao buscar informações da Api, tente novamente mais tarde!" })
             });
     }
     handlePageClick = (e) => {
@@ -64,10 +62,10 @@ class Page_home extends Component {
         return (
             <div className="home">
                 <div className="header">
-                    <img className="logoMarvel" src={logoMarvel} title="logo da Marvel" alt="logo da Marvel" />
+                    <img className="logoMarvel" src={iconMarvel} title="logo da Marvel" alt="logo da Marvel" />
                 </div>
 
-                <Form_pesquisa />
+                <Search />
 
                 <div id="container_comics">
                     {this.state.postData}
